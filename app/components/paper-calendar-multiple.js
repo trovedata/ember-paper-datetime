@@ -1,1 +1,1 @@
-export { default } from 'ember-paper/components/paper-calendar-multiple';
+export { default } from 'ember-paper-datetime/components/paper-calendar-multiple';

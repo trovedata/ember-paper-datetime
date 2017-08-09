@@ -1,1 +1,1 @@
-export { default } from 'ember-paper/components/paper-date-nav';
+export { default } from 'ember-paper-datetime/components/paper-date-nav';

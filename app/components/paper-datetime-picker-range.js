@@ -1,1 +1,1 @@
-export { default } from 'ember-paper/components/paper-datetime-picker-range';
+export { default } from 'ember-paper-datetime/components/paper-datetime-picker-range';

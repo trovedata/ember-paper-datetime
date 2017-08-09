@@ -1,1 +1,1 @@
-export { default } from 'ember-paper/components/paper-datetime';
+export { default } from 'ember-paper-datetime/components/paper-datetime';
