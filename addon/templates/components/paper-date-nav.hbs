@@ -1,0 +1,10 @@
+{{#paper-button onClick=(action calendar.actions.moveCenter -1 "month") iconButton=true primary=true noInk=true}}
+  {{paper-icon "keyboard-arrow-left"}}
+{{/paper-button}}
+
+<span {{action onMonthClick}}>{{moment-format calendar.center "MMMM"}}</span>
+<span {{action onYearClick}}>{{moment-format calendar.center "YYYY"}}</span>
+
+{{#paper-button onClick=(action calendar.actions.moveCenter 1 "month") iconButton=true primary=true noInk=true}}
+  {{paper-icon "keyboard-arrow-right"}}
+{{/paper-button}}

@@ -1,0 +1,21 @@
+{{#if hasBlock}}
+  {{yield (hash
+    date=(component dateComponent
+      selected=datetime
+      onSelect=(action 'selectDate')
+      center=center
+      onCenterChange=(action (mut center) value="moment"))
+    time=(component timeComponent
+      selected=datetime
+      onChange=onChange)
+  )}}
+{{else}}
+  <div class="layout-row">
+    {{paper-date
+      selected=datetime
+      onSelect=(action 'selectDate')
+      center=center
+      onCenterChange=(action (mut center) value="moment")}}
+    {{paper-time class="layout-row" datetime=datetime onChange=onChange}}
+  </div>
+{{/if}}

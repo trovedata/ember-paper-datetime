@@ -1,0 +1,67 @@
+<div class="layout-row layout-align-center-center">
+  <div class="layout-column">
+    {{#paper-button data-test-hour-incrementer=true onClick=(action 'setHour' 1) iconButton=true primary=true disabled=(eq hour 23)}}
+      {{paper-icon "keyboard-arrow-up"}}
+    {{/paper-button}}
+
+    {{#paper-button data-test-hour=true iconButton=true onClick=(action 'showHours')}}
+      {{displayHour}}
+    {{/paper-button}}
+
+    {{#paper-button data-test-hour-decrementer=true onClick=(action 'setHour' -1) iconButton=true primary=true disabled=(eq hour 0)}}
+      {{paper-icon "keyboard-arrow-down"}}
+    {{/paper-button}}
+  </div>
+
+  <div class="layout-column">
+    {{#paper-button data-test-minute-incrementer=true onClick=(action 'setMinute' 1) iconButton=true primary=true disabled=(eq minute 59)}}
+      {{paper-icon "keyboard-arrow-up"}}
+    {{/paper-button}}
+
+    {{#paper-button data-test-minute=true iconButton=true onClick=(action 'showMinutes')}}
+      {{displayMinute}}
+    {{/paper-button}}
+
+    {{#paper-button data-test-minute-decrementer=true onClick=(action 'setMinute' -1) iconButton=true primary=true disabled=(eq minute 0)}}
+      {{paper-icon "keyboard-arrow-down"}}
+    {{/paper-button}}
+  </div>
+
+  {{#unless use24Hour}}
+    <div class="layout-column">
+      {{#paper-button data-test-meridiem=true iconButton=true onClick=(action 'cycleMeridiem')}}
+        {{meridiem}}
+      {{/paper-button}}
+    </div>
+  {{/unless}}
+</div>
+{{#if showHours}}
+  <div style="background: white; position: absolute; top: 0; bottom: 0; left: 0; right: 0;" class="layout-column">
+  {{#each (chunk 4 hours) as |hourRows|}}
+    <div class="layout-row flex-33">
+    {{#each hourRows as |hour|}}
+      <div class="layout-column flex-25 layout-align-center-center">
+        {{#paper-button iconButton=true onClick=(action 'selectHour' hour)}}
+          {{hour}}
+        {{/paper-button}}
+      </div>
+    {{/each}}
+    </div>
+  {{/each}}
+  </div>
+{{/if}}
+{{#if showMinutes}}
+  <div style="background: white; z-index: 1000; position: absolute; top: 0; bottom: 0; left: 0; right: 0;" class="layout-column">
+  {{#each (chunk 2 minutes) as |minuteRows|}}
+    <div class="layout-row flex-50">
+      {{#each minuteRows as |minute|}}
+        <div class="layout-column flex-50 layout-align-center-center">
+          {{#paper-button iconButton=true onClick=(action 'selectMinute' minute)}}
+            {{minute}}
+          {{/paper-button}}
+        </div>
+      {{/each}}
+    </div>
+  {{/each}}
+  </div>
+{{/if}}

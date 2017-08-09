@@ -1,0 +1,25 @@
+{{#if showYears}}
+  <div style="background: white; z-index: 1000; position: absolute; left: 0; right: 0; top: 0; bottom: 0;" class="layout-column">
+  {{#each (chunk 3 years) as |yearsRow|}}
+    <div class="layout-row flex-33">
+    {{#each yearsRow as |year|}}
+      <div class="layout-column flex-33 layout-align-center-center" {{action 'setCenterYear' year}}>{{year}}</div>
+    {{/each}}
+    </div>
+  {{/each}}
+  </div>
+{{/if}}
+
+{{#if showMonths}}
+  <div style="background: white; z-index: 1000; position: absolute; left: 0; right: 0; top: 0; bottom: 0;" class="layout-column">
+  {{#each (chunk 4 months) as |monthsRow|}}
+    <div class="layout-row flex-33">
+      {{#each monthsRow as |month|}}
+      <div class="layout-column flex-25 layout-align-center-center" {{action 'setCenterMonth' month}}>{{month}}</div>
+      {{/each}}
+    </div>
+  {{/each}}
+  </div>
+{{/if}}
+{{component navComponent calendar=(readonly publicAPI) onCenterChange=(readonly onCenterChange) onYearClick=(action 'showYears') onMonthClick=(action 'showMonths')}}
+{{component daysComponent calendar=(readonly publicAPI) onSelect=(readonly onSelect)}}

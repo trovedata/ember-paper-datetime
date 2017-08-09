@@ -1,0 +1,19 @@
+  {{#paper-menu position="target bottom" as |dropdown|}}
+    {{#dropdown.trigger}}
+      {{paper-input placeholder=placeholder label=label value=(if date (moment-format date format)) onChange=null}}
+    {{/dropdown.trigger}}
+
+    {{#dropdown.content}}
+      <div class="layout-row">
+        {{#paper-date
+          selected=date
+          onSelect=(action 'selectDate')
+          center=center
+          onCenterChange=(action (mut center) value="moment")
+        as |calendar|}}
+          {{calendar.nav}}
+          {{calendar.days}}
+        {{/paper-date}}
+      </div>
+    {{/dropdown.content}}
+  {{/paper-menu}}

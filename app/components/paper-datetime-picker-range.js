@@ -1,0 +1,1 @@
+export { default } from 'ember-paper/components/paper-datetime-picker-range';
